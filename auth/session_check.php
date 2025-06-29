@@ -1,13 +1,11 @@
 <?php
 session_start();
-
 function checkLogin() {
     if (!isset($_SESSION['user_id']) || !isset($_SESSION['username']) || !isset($_SESSION['role'])) {
         header("Location: ../auth/login.php");
         exit();
     }
 }
-
 function checkRole($required_role) {
     checkLogin();
     if ($_SESSION['role'] !== $required_role) {
@@ -15,7 +13,6 @@ function checkRole($required_role) {
         exit();
     }
 }
-
 function redirectToDashboard($role) {
     switch($role) {
         case 'student':
@@ -32,7 +29,6 @@ function redirectToDashboard($role) {
     }
     exit();
 }
-
 function getUserInfo() {
     return [
         'user_id' => $_SESSION['user_id'] ?? null,

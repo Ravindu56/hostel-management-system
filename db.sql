@@ -165,7 +165,8 @@ CREATE TABLE Visitor_Table (
 CREATE TABLE Complaint_Table (
     Complaint_ID VARCHAR(10) PRIMARY KEY,
     student_id VARCHAR(10) NOT NULL,
-    category ENUM('Maintenance', 'Behavior', 'Plumbing', 'Electrical', 'Cleaning', 'Security', 'Food', 'Internet', 'Furniture', 'Other') NOT NULL,
+    category ENUM('Maintenance', 'Behavior', 'Plumbing', 'Electrical', 'Cleaning', 'Security', 
+    'Food', 'Internet', 'Furniture', 'Other') NOT NULL,
     title VARCHAR(200),
     description TEXT NOT NULL,
     priority ENUM('low', 'medium', 'high', 'urgent') DEFAULT 'medium',
