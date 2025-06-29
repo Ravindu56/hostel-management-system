@@ -44,7 +44,7 @@ A **web-based hostel management platform** built with PHP, MySQL, HTML, CSS, and
 
 ## 🚀 Quick Start
 
-# git clone https://github.com/Ravindu56/hostel-management-system.git
+`git clone https://github.com/Ravindu56/hostel-management-system.git`
 
 1. **Import the database schema** from `backups/` or `db.sql`
 2. **Configure database settings** in `config/database.php`
@@ -56,7 +56,7 @@ A **web-based hostel management platform** built with PHP, MySQL, HTML, CSS, and
 ## 📂 Project Structure
 
 
----
+```
 hostel-management-system/
 ├── admin/ # Admin module
 ├── student/ # Student module
@@ -68,7 +68,7 @@ hostel-management-system/
 ├── js/ # JavaScript
 ├── includes/ # Shared includes
 └── index.php # Main entry point
----
+```
 ---
 
 ## 📜 License
