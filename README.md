@@ -55,8 +55,8 @@ A **web-based hostel management platform** built with PHP, MySQL, HTML, CSS, and
 
 ## 📂 Project Structure
 
-undefined
 
+---
 hostel-management-system/
 ├── admin/ # Admin module
 ├── student/ # Student module
@@ -68,8 +68,7 @@ hostel-management-system/
 ├── js/ # JavaScript
 ├── includes/ # Shared includes
 └── index.php # Main entry point
-
-undefined
+---
 ---
 
 ## 📜 License
