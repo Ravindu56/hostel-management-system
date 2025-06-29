@@ -298,7 +298,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['unassign_room'])) {
     }
 }
 
-// FIXED: Room status updates with proper parameter binding
+//  Room status updates with proper parameter binding
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_room_status'])) {
     $room_id = $_POST['room_id'];
     $room_status = $_POST['room_status'];
@@ -639,7 +639,7 @@ $room_stats = $stats_stmt->fetch();
         </div>
     </div>
 
-    <!-- ENHANCED: Edit Room Modal with all fields including editable Room_ID -->
+    <!--  Edit Room Modal with all fields including editable Room_ID -->
     <div id="editRoomModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">

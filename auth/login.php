@@ -23,7 +23,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $database = new Database();
             $conn = $database->getConnection();
             
-            // Enhanced query based on your ERD structure
+            // Prepare a query to fetch user details based on username
+            // Using LEFT JOINs to get user details from respective tables based on user_role
             $query = "SELECT ua.user_id, ua.username, ua.password_hash, ua.user_role, ua.is_active, ua.failed_attempts,
                              CASE 
                                  WHEN ua.user_role = 'student' THEN CONCAT(s.first_name, ' ', s.last_name)
@@ -80,8 +81,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         $update_stmt = $conn->prepare($update_query);
                         $update_stmt->bindParam(':user_id', $user['user_id']);
                         $update_stmt->execute();
-                        
-                        // Set comprehensive session variables
+
+                        // Set session variables
                         $_SESSION['user_id'] = $user['user_id'];
                         $_SESSION['username'] = $user['username'];
                         $_SESSION['role'] = $user['user_role'];
@@ -91,17 +92,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         $_SESSION['login_time'] = time();
                         
                         // Log successful login (optional audit trail)
-                        $audit_query = "INSERT INTO System_Audit_Log (user_id, action_type, table_affected, ip_address, user_agent) 
-                                       VALUES (:user_id, 'LOGIN_SUCCESS', 'user_auth', :ip, :user_agent)";
-                        try {
-                            $audit_stmt = $conn->prepare($audit_query);
-                            $audit_stmt->bindParam(':user_id', $user['user_id']);
-                            $audit_stmt->bindParam(':ip', $_SERVER['REMOTE_ADDR']);
-                            $audit_stmt->bindParam(':user_agent', $_SERVER['HTTP_USER_AGENT']);
-                            $audit_stmt->execute();
-                        } catch (Exception $e) {
-                            // Audit logging is optional, don't break login if it fails
-                        }
+                        // $audit_query = "INSERT INTO System_Audit_Log (user_id, action_type, table_affected, ip_address, user_agent) 
+                        //                VALUES (:user_id, 'LOGIN_SUCCESS', 'user_auth', :ip, :user_agent)";
+                        // try {
+                        //     $audit_stmt = $conn->prepare($audit_query);
+                        //     $audit_stmt->bindParam(':user_id', $user['user_id']);
+                        //     $audit_stmt->bindParam(':ip', $_SERVER['REMOTE_ADDR']);
+                        //     $audit_stmt->bindParam(':user_agent', $_SERVER['HTTP_USER_AGENT']);
+                        //     $audit_stmt->execute();
+                        // } catch (Exception $e) {
+                            
+                        // }
                         
                         // Redirect based on role
                         require_once 'session_check.php';
